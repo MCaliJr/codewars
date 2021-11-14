@@ -31,6 +31,3 @@ Array.prototype.odd = function () {
     return 0 != item % 2;
   });
 };
-
-let numbers = [1, 2, 3, 4, 5];
-numbers.square();

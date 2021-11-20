@@ -1,7 +1,5 @@
 // complete the function
 function solution(string) {
-  // for every big letter add space before and return new string
-
   newArr = string.split("");
   uppercasedSpaceArr = newArr.map((letter) => {
     if (letter == letter.toUpperCase()) {
@@ -9,8 +7,5 @@ function solution(string) {
     }
     return letter;
   });
-  string = uppercasedSpaceArr.join("");
-  console.log(string);
+  return uppercasedSpaceArr.join("");
 }
-
-solution("jfksaFSssdf");

@@ -1,16 +1,5 @@
-// complete the function
-function solution(string) {
-  // for every big letter add space before and return new string
-
-  newArr = string.split("");
-  uppercasedSpaceArr = newArr.map((letter) => {
-    if (letter == letter.toUpperCase()) {
-      return (letter = ` ${letter}`);
-    }
-    return letter;
-  });
-  string = uppercasedSpaceArr.join("");
-  console.log(string);
+function validate(password) {
+  return /"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"/.test(password);
 }
 
-solution("jfksaFSssdf");
+validate("helloooF");

@@ -1,20 +1,43 @@
-var encryptThis = function (text) {
-  let textArr = text.split(" ");
-  let outcome = [];
+function encode(string) {
+  return Array.from(string)
+    .map((letter) => {
+      switch (letter) {
+        case "a":
+          return 1;
+        case "e":
+          return 2;
+        case "i":
+          return 3;
+        case "o":
+          return 4;
+        case "u":
+          return 5;
+      }
+      return letter;
+    })
+    .join("");
+}
 
-  textArr.forEach((str) => {
-    if (str.length == 1) {
-      // Switching one letter words to ASCII
-      outcome.push(str.charCodeAt(0));
-    } else {
-      let tempStr = str.split("");
-      // Switching first letter to ASCII
-      tempStr[0] = str.charCodeAt(0);
-      // Switching second and last letter
-      tempStr[1] = str[str.length - 1];
-      tempStr[str.length - 1] = str[1];
-      outcome.push(tempStr.join(""));
-    }
-  });
-  return outcome.join(" ");
-};
+console.log(encode("hello"));
+
+function decode(string) {
+  return Array.from(string)
+    .map((letter) => {
+      switch (letter) {
+        case "1":
+          return "a";
+        case "2":
+          return "e";
+        case "3":
+          return "i";
+        case "4":
+          return "o";
+        case "5":
+          return "u";
+      }
+      return letter;
+    })
+    .join("");
+}
+
+console.log(decode("h2ll4"));

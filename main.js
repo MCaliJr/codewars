@@ -1,26 +1,39 @@
-function permutations(string) {
-  if (!string || typeof string !== "string") {
-    return;
-  } else if (string.length < 2) {
-    return [string];
-  }
+function score(dice) {
+  let total = 0;
+  let ones = 0;
+  let twos = 0;
+  let threes = 0;
+  let fours = 0;
+  let fives = 0;
+  let sixes = 0;
 
-  let permutArr = [];
-
-  for (let i = 0; i < string.length; i++) {
-    let char = string[i];
-
-    if (string.indexOf(char) != i) continue;
-
-    let remainingChars =
-      string.slice(0, i) + string.slice(i + 1, string.length);
-
-    for (let permutation of permutations(remainingChars)) {
-      permutArr.push(char + permutation);
+  dice.forEach((roll) => {
+    if (roll === 1) {
+      ones++;
+      if (ones === 3) {
+        total += 1000;
+        ones = 0;
+      }
     }
-  }
-  return permutArr;
-}
+    if (roll === 5) {
+      fives++;
+      if (fives === 3) {
+        total += 500;
+        fives = 0;
+      }
+    }
+    if (roll === 2) twos++;
+    if (roll === 3) threes++;
+    if (roll === 4) fours++;
+    if (roll === 6) sixes++;
+  });
 
-string = "hello";
-console.log([string]);
+  total += ones * 100;
+  total += fives * 50;
+  if (sixes >= 3) total += 600;
+  if (fours >= 3) total += 400;
+  if (threes >= 3) total += 300;
+  if (twos >= 3) total += 200;
+
+  return total;
+}
